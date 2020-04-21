@@ -11,6 +11,14 @@ pub struct CSIDHPrivateKey {
     e: [i8; NUM_PRIMES],
 }
 
+impl std::ops::Deref for CSIDHPrivateKey {
+    type Target = [u8];
+
+    fn deref(&self) -> &Self::Target {
+        unsafe { std::mem::transmute(&self.e[..]) }
+    }
+}
+
 pub type PublicKey = CSIDHPublicKey;
 pub type SecretKey = CSIDHPrivateKey;
 
@@ -43,6 +51,14 @@ impl CSIDHPrivateKey {
 #[derive(Clone, Copy)]
 pub struct CSIDHPublicKey {
     c: [u8; 64],
+}
+
+impl std::ops::Deref for CSIDHPublicKey {
+    type Target = [u8];
+
+    fn deref(&self) -> &Self::Target {
+        unsafe { std::mem::transmute(&self.c[..]) }
+    }
 }
 
 impl CSIDHPublicKey {
