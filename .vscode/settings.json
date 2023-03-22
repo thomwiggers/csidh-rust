@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.m4i": "m4",
+        "primes.h": "c",
+        "fp_namespace.h": "c",
+        "uintbig.h": "c"
+    }
+}

@@ -2,13 +2,14 @@
 name = "csidh-rust"
 version = "0.1.0"
 authors = ["Thom Wiggers <thom@thomwiggers.nl>"]
-edition = "2018"
-links = "csidh"
+edition = "2021"
+links = "ctidh"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 libc = "0.2.0"
+paste = "1.0"
 
 [build-dependencies]
 cc = { version = "1.0" }

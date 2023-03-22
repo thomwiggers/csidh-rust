@@ -1,3 +1,0 @@
-[submodule "constant-csidh-c-implementation"]
-	path = constant-csidh-c-implementation
-	url = git@github.com:thomwiggers/constant-csidh-c-implementation.git

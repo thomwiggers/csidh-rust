@@ -1,9 +1,9 @@
 # CSIDH rust wrapper
 
-Wrapper around the CSIDH implementation from [Meyer, Campos and Reith: _On Lions and Elligators: An efficient constant-time implementation of CSIDH_][eprint].
+Wrapper around the CTIDH implementation from [Gustavo Banegas, Daniel J. Bernstein, Fabio Campos, Tung Chou, Tanja Lange, Michael Meyer, Benjamin Smith, Jana Sotáková. "CTIDH: faster constant-time CSIDH."][website].
 
-[eprint]: https://eprint.iacr.org/2018/1198
+[website]: https://ctidh.isogeny.org
 
 ## License
 
-CC0: see `LICENSE.md`.
+The Rust code is covered by CC0: see `LICENSE.md`.
