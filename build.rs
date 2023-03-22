@@ -21,7 +21,7 @@ fn main() {
     println!("cargo:rustc-link-lib=ctidh_generic");
 
 
-    for size in ["512", "1024"] {
+    for size in ["511", "512", "1024", "2048"] {
         let ctidh_n_files: Vec<_> = [
             "csidh.c",
             "uintbig{size}.S",

@@ -10,7 +10,7 @@ macro_rules! ctidh_mod {
             pub const PRIVATE_KEY_LEN: usize = NUM_PRIMES;
 
             #[repr(C)]
-            #[derive(Clone, Copy)]
+            #[derive(Clone, Copy, PartialEq, Debug)]
             pub struct CSIDHPrivateKey {
                 e: [i8; NUM_PRIMES],
             }
@@ -52,7 +52,7 @@ macro_rules! ctidh_mod {
             }
 
             #[repr(C)]
-            #[derive(Clone, Copy)]
+            #[derive(Clone, Copy, PartialEq, Debug)]
             pub struct CSIDHPublicKey {
                 c: [u8; PUBLIC_KEY_LEN],
             }
@@ -146,16 +146,27 @@ macro_rules! ctidh_mod {
                 fn test_agreement() {
                     let (pka, ska) = keypair();
                     let (pkb, skb) = keypair();
+                    assert_ne!(pka, pkb);
+                    assert_ne!(ska, skb);
 
                     let keya = agreement(&pka, &skb);
                     let keyb = agreement(&pkb, &ska);
 
                     assert_eq!(&keya[..], &keyb[..]);
+
+                    let (pkb2, skb2) = keypair();
+                    assert_ne!(skb2, skb);
+                    let keya2 = agreement(&pka, &skb2);
+                    let keyb2 = agreement(&pkb2, &ska);
+                    assert_eq!(keya2, keyb2);
+                    assert_ne!(keya, keya2);
                 }
             }
         }
     }}
 }
 
+ctidh_mod!(511, 74);
 ctidh_mod!(512, 74);
 ctidh_mod!(1024, 130);
+ctidh_mod!(2048, 231);
