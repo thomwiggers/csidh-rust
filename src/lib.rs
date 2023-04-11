@@ -4,6 +4,10 @@ macro_rules! ctidh_mod {
     ($size: literal, $num_primes: literal) => {paste!{
         pub mod [<ctidh $size>] {
 
+            pub fn name() -> &'static str {
+                stringify!([<ctidh $size>])
+            }
+
             const NUM_PRIMES: usize = $num_primes;
 
             pub const PUBLIC_KEY_LEN: usize = 8 * (($size+63)/64);
@@ -141,6 +145,11 @@ macro_rules! ctidh_mod {
             #[cfg(test)]
             mod test {
                 use super::*;
+
+                #[test]
+                fn test_name() {
+                    assert_ne!(name(), "");
+                }
 
                 #[test]
                 fn test_agreement() {
